@@ -1,38 +1,44 @@
-name: Update Teemo Stats
+name: Atualizar Dados do Teemo
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # A cada 6 horas
+    - cron: '0 */6 * * *' # Executa a cada 6 horas
   workflow_dispatch:
 
 jobs:
-  fetch-teemo-data:
+  atualizar-teemo:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v3
 
-      - name: Configurar Node.js
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Instalar Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
       - name: Instalar dependências
-        run: npm install node-fetch@2
+        run: npm install
+
+      - name: Criar pasta data
+        run: mkdir -p data
 
       - name: Buscar dados do Teemo
-        run: |
-          mkdir -p data
-          node scripts/fetch_teemo.js
         env:
-          RIOT_API_KEY: ${{ secrets.riot_api_key }}
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: node scripts/fetch_teemo.js
 
-      - name: Commit e push dos dados
+      - name: Configurar Git
         run: |
-          git config user.name "github-actions"
-          git config user.email "bot@github.com"
-          git checkout main
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit e Push
+        run: |
           git add data/teemo.json
-          git commit -m "Atualizar dados do Teemo" || echo "Nada a commitar"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/Sporathus-Fungus/Sporathus-Fungus.github.io.git main
-        continue-on-error: true
+          git commit -m "Atualizar dados do Teemo" || echo "Nada para commitar"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/Sporathus-Fungus/Sporathus-Fungus.github.io.git
+          git push origin main
