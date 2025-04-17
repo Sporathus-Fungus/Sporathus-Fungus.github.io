@@ -23,7 +23,7 @@ jobs:
       - name: Buscar dados do Teemo
         run: |
           mkdir -p data
-          node scripts/fetch-teemo.js
+          node scripts/fetch_teemo.js
         env:
           RIOT_API_KEY: ${{ secrets.riot_api_key }}
 
