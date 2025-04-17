@@ -15,14 +15,14 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('images/bg-full.png');
+  background-image: url('assets/img/background-dark-forest.png');
   background-size: cover;
   background-position: center;
 }
 
 .banner {
   height: 100vh;
-  background-image: url('images/sporathus_fungus_banner.png');
+  background-image: url('assets/img/banner-dark.png');
   background-size: cover;
   background-position: center;
   position: relative;
