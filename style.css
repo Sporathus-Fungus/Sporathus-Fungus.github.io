@@ -1,150 +1,134 @@
+/* Reset e configurações básicas */
 body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: 'Cinzel', serif;
-    color: #ccffd5;
-    background-color: #0a0a0a;
-  }
-  
-  .page-container {
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.8s ease-in-out;
-  }
-  
-  .page {
-    height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-  
-  /* 🌲 Página Inicial com fundo */
-  .banner-page {
-    background: url('assets/img/background-dark-forest.png') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    border-radius: 20px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  background-color: #000;
+}
+
+.section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('images/bg-full.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.banner {
+  height: 100vh;
+  background-image: url('images/sporathus_fungus_banner.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.overlay h1 {
+  font-size: 3em;
+  margin: 0;
+  text-shadow: 2px 2px 10px #0f0;
+}
+
+.overlay p {
+  font-size: 1.2em;
+  margin: 10px 0 20px;
+  max-width: 600px;
+}
+
+.button-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.youtube-link {
+  background-color: #e53935;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #e53935;
+}
+
+.mushroom-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.mushroom-icon {
+  width: 60px;
+  height: auto;
+  margin-top: 5px;
+}
+
+.mushroom-text {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.stats-container {
+  max-width: 800px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 0 15px #0f0;
+}
+
+.stats-container h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.stats-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-container li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #111;
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+@media (max-width: 768px) {
   .overlay h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    font-size: 2em;
   }
-  
-  .overlay p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+
+  .stats-container {
+    padding: 15px;
   }
-  
-  /* 🎯 Botões */
-  .button-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 32px;
-    margin-top: 30px;
-  }
-  
-  .youtube-link {
-    background-color: #00ff88;
-    padding: 12px 20px;
-    border-radius: 12px;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .youtube-link:hover {
-    background-color: #00cc70;
-  }
-  
-  /* 🍄 Cogumelo animado */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-6px);
-    }
-  }
-  
-  @keyframes glow-text {
-    0%, 100% {
-      text-shadow: 0 0 4px #00ff88, 0 0 8px #00ff88;
-    }
-    50% {
-      text-shadow: 0 0 6px #66ffc2, 0 0 12px #66ffc2;
-    }
-  }
-  
-  .scroll-mushroom {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: float 3s ease-in-out infinite;
-    text-decoration: none;
-  }
-  
-  .scroll-mushroom img {
-    width: 48px;
-    height: 48px;
-    filter: drop-shadow(0 0 6px #00ff88aa);
-    transition: transform 0.3s ease;
-  }
-  
-  .scroll-mushroom img:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 10px #00ff88ff);
-  }
-  
-  .scroll-mushroom span {
-    margin-top: 4px;
-    font-size: 14px;
-    color: #ccffd5;
-    animation: glow-text 2s ease-in-out infinite;
-  }
-  
-  /* 📊 Página de Estatísticas */
-  .stats-page {
-    background: url('assets/img/banner-dark.png') no-repeat center center/cover;
-    /* background: #0c0c0c; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .stats-content {
-    padding: 2rem;
-  }
-  
-  .stats-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .back-top {
-    margin-top: 2rem;
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: #00ff88;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-  }
-  
-  .back-top:hover {
-    background-color: #00cc70;
-  }
-  
+}
